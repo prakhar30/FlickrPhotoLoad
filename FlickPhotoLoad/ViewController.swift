@@ -13,6 +13,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var tableView: UITableView!
     var numberOfRows = 4
     var expandedCells = [Int]()
+    let flickrURL = "https://api.flickr.com/services/rest/?method=flickr.test.echo&name=value"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,10 +65,34 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if expandedCells.contains(indexPath.row) {
-            return 200
+            return 290
         } else {
             return 170
         }
+    }
+    
+    func getdata(){
+        let url = URL(string: flickrURL)
+        if let usableUrl = url {
+            let request = URLRequest(url: usableUrl)
+            let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
+                DispatchQueue.main.async {
+                    guard let data = data, error == nil else {              // check for fundamental networking error
+                        self.alertBox(msg: "Network Error.")
+                        return
+                    }
+                }
+            })
+            task.resume()
+        }
+    }
+    
+    func alertBox(msg: String) {
+        let refreshAlert = UIAlertController(title: "Error", message: "\(msg)", preferredStyle: UIAlertControllerStyle.alert)
+        refreshAlert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (action: UIAlertAction!) in
+            refreshAlert .dismiss(animated: true, completion: nil)
+        }))
+        present(refreshAlert, animated: true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {
