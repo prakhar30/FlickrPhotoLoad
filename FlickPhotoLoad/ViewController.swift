@@ -69,7 +69,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         lastButtonPressed.layer.borderColor = UIColor.clear.cgColor
         let but = sender.viewWithTag(sender.tag) as! UIButton
-        but.layer.borderWidth = 2.0
+        but.layer.borderWidth = 5.0
         but.layer.borderColor = UIColor.blue.cgColor
         if(lastButtonPressed == but){
             but.layer.borderColor = UIColor.clear.cgColor
@@ -99,7 +99,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         lastButtonPressed.layer.borderColor = UIColor.clear.cgColor
         let but = sender.viewWithTag(sender.tag) as! UIButton
-        but.layer.borderWidth = 2.0
+        but.layer.borderWidth = 5.0
         but.layer.borderColor = UIColor.blue.cgColor
         if(lastButtonPressed == but){
             but.layer.borderColor = UIColor.clear.cgColor
@@ -115,7 +115,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if expandedCells.contains(indexPath.row) {
             return 290
         } else {
-            return 170
+            return 150
         }
     }
     
