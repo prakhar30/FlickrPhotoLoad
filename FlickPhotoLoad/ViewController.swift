@@ -17,7 +17,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var imgList = [ImageList]()
     var images = [UIImage]()
     var lastButtonPressed:UIButton = UIButton()
-    let flickrURL = "https://api.flickr.com/services/rest/?method=flickr.photos.getRecent&api_key=3aabe25e48b4768af1a7e303672fed00&per_page=10&page=1&format=json&nojsoncallback=1"
+    let flickrURL = "https://api.flickr.com/services/rest/?method=flickr.photos.getRecent&api_key=ef49d1cd882c2ab67ceab68723531ee1&per_page=10&page=1&format=json&nojsoncallback=1"
     var buttonTapped = 0 // 1 for left, 2 for right
     
     override func viewDidLoad() {
