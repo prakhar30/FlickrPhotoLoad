@@ -11,11 +11,13 @@ import UIKit
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     @IBOutlet weak var tableView: UITableView!
-    var numberOfRows = 4
+    var numberOfRows = 10
     var expandedCells = [Int]()
     var dataArray = [[String]]()
+    var imgList = [ImageList]()
+    var images = [UIImage]()
     var lastButtonPressed:UIButton = UIButton()
-    let flickrURL = "https://api.flickr.com/services/rest/?method=flickr.photos.getRecent&api_key=d659035c6e847b871e101d5294703707&per_page=10&page=1&format=json&nojsoncallback=1"
+    let flickrURL = "https://api.flickr.com/services/rest/?method=flickr.photos.getRecent&api_key=3aabe25e48b4768af1a7e303672fed00&per_page=10&page=1&format=json&nojsoncallback=1"
     var buttonTapped = 0 // 1 for left, 2 for right
     
     override func viewDidLoad() {
@@ -25,7 +27,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         dataArray.append(["index 1 \n left", "index 1 \n right"])
         dataArray.append(["index 2 \n left", "index 2 \n right"])
         dataArray.append(["index 3 \n left", "index 3 \n right"])
+        dataArray.append(["index 0 \n left", "index 0 \n right"])
+        dataArray.append(["index 1 \n left", "index 1 \n right"])
+        dataArray.append(["index 2 \n left", "index 2 \n right"])
+        dataArray.append(["index 3 \n left", "index 3 \n right"])
+        dataArray.append(["index 2 \n left", "index 2 \n right"])
+        dataArray.append(["index 3 \n left", "index 3 \n right"])
         tableView.separatorStyle = .none
+        getdata()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -36,6 +45,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let cell:TableViewCell = self.tableView.dequeueReusableCell(withIdentifier: "Cell") as! TableViewCell
         cell.leftImageView.image = UIImage(named: "doctor")
         cell.rightImageView.image = UIImage(named: "doctor")
+//        cell.leftImageView.image = images[indexPath.row]
+//        cell.rightImageView.image = images[indexPath.row]
         cell.selectionStyle = UITableViewCellSelectionStyle.none
         cell.leftImageButton.tag = indexPath.row
         cell.rightImageButton.tag = indexPath.row
@@ -132,10 +143,23 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                         return
                     }
                     let json = try? JSONSerialization.jsonObject(with: data, options: []) as! NSDictionary
-                    print(json)
+                    let photos = json!["photos"] as! NSDictionary
+                    let photo = photos["photo"] as! NSArray
+                    for i in 0..<photo.count{
+                        let img = photo[i] as! [String:Any]
+                        let obj:ImageList = ImageList(f: "\(img["farm"]!)", ser: "\(img["server"]!)", i: "\(img["id"]!)", sec: "\(img["secret"]!)")
+                        self.imgList.append(obj)
+                    }
                 }
             })
             task.resume()
+        }
+    }
+    
+    func getImage(){
+        for i in 0..<imgList.count{
+            if let url = URL(string: "https://farm\(imgList[i].farm).staticflickr.com/\(imgList[i].server)/\(imgList[i].id)_\(imgList[i].secret)_m.jpg") {
+            }
         }
     }
     
