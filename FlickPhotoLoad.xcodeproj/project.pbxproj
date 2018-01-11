@@ -15,6 +15,7 @@
 		95292E1120065326006FD63A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95292E0F20065326006FD63A /* LaunchScreen.storyboard */; };
 		95292E1E20067755006FD63A /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95292E1D20067755006FD63A /* TableViewCell.swift */; };
 		95741503200746ED00AF50AC /* ImageList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95741502200746ED00AF50AC /* ImageList.swift */; };
+		95F072AF200799E3003F466D /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95F072AE200799E3003F466D /* SDWebImage.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		95292E1220065326006FD63A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		95292E1D20067755006FD63A /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		95741502200746ED00AF50AC /* ImageList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageList.swift; sourceTree = "<group>"; };
+		95F072AE200799E3003F466D /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = Carthage/Build/iOS/SDWebImage.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95F072AF200799E3003F466D /* SDWebImage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,6 +49,7 @@
 			children = (
 				95292E0220065326006FD63A /* FlickPhotoLoad */,
 				95292E0120065326006FD63A /* Products */,
+				95F072AD200799E2003F466D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -113,6 +117,14 @@
 			name = TableViewCell;
 			sourceTree = "<group>";
 		};
+		95F072AD200799E2003F466D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				95F072AE200799E3003F466D /* SDWebImage.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -123,6 +135,7 @@
 				95292DFC20065326006FD63A /* Sources */,
 				95292DFD20065326006FD63A /* Frameworks */,
 				95292DFE20065326006FD63A /* Resources */,
+				95F072B020079A0A003F466D /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -179,6 +192,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		95F072B020079A0A003F466D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/SDWebImage.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		95292DFC20065326006FD63A /* Sources */ = {
@@ -314,6 +344,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = FlickPhotoLoad/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.try.prakhar.FlickPhotoLoad;
@@ -326,6 +360,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = FlickPhotoLoad/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.try.prakhar.FlickPhotoLoad;

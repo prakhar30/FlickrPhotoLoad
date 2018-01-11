@@ -7,11 +7,11 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     @IBOutlet weak var tableView: UITableView!
-    var numberOfRows = 10
     var expandedCells = [Int]()
     var dataArray = [[String]]()
     var imgList = [ImageList]()
@@ -23,31 +23,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        dataArray.append(["index 0 \n left", "index 0 \n right"])
-        dataArray.append(["index 1 \n left", "index 1 \n right"])
-        dataArray.append(["index 2 \n left", "index 2 \n right"])
-        dataArray.append(["index 3 \n left", "index 3 \n right"])
-        dataArray.append(["index 0 \n left", "index 0 \n right"])
-        dataArray.append(["index 1 \n left", "index 1 \n right"])
-        dataArray.append(["index 2 \n left", "index 2 \n right"])
-        dataArray.append(["index 3 \n left", "index 3 \n right"])
-        dataArray.append(["index 2 \n left", "index 2 \n right"])
-        dataArray.append(["index 3 \n left", "index 3 \n right"])
         tableView.separatorStyle = .none
         getdata()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return numberOfRows
+        return (imgList.count)/2
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:TableViewCell = self.tableView.dequeueReusableCell(withIdentifier: "Cell") as! TableViewCell
-        cell.leftImageView.image = UIImage(named: "doctor")
-        cell.rightImageView.image = UIImage(named: "doctor")
-//        cell.leftImageView.image = images[indexPath.row]
-//        cell.rightImageView.image = images[indexPath.row]
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.leftImageView.sd_setImage(with: URL(string: "https://farm\(imgList[(2*indexPath.row)].farm).staticflickr.com/\(imgList[(2*indexPath.row)].server)/\(imgList[(2*indexPath.row)].id)_\(imgList[(2*indexPath.row)].secret)_m.jpg"), placeholderImage: UIImage(named: "doctor"))
+        cell.rightImageView.sd_setImage(with: URL(string: "https://farm\(imgList[(2*indexPath.row)+1].farm).staticflickr.com/\(imgList[(2*indexPath.row)+1].server)/\(imgList[(2*indexPath.row)+1].id)_\(imgList[(2*indexPath.row)+1].secret)_m.jpg"), placeholderImage: UIImage(named: "doctor"))
         cell.leftImageButton.tag = indexPath.row
         cell.rightImageButton.tag = indexPath.row
         cell.leftImageButton.addTarget(self, action: #selector(leftButtonAction), for: .touchUpInside)
@@ -150,16 +137,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                         let obj:ImageList = ImageList(f: "\(img["farm"]!)", ser: "\(img["server"]!)", i: "\(img["id"]!)", sec: "\(img["secret"]!)")
                         self.imgList.append(obj)
                     }
+                    for i in 0..<photo.count/2{
+                        let img1Title = photo[(2*i)] as! [String:Any]
+                        let img2Title = photo[(2*i)+1] as! [String:Any]
+                        self.dataArray.append(["\(img1Title["title"]!)", "\(img2Title["title"]!)"])
+                    }
+                    self.tableView.reloadData()
                 }
             })
             task.resume()
-        }
-    }
-    
-    func getImage(){
-        for i in 0..<imgList.count{
-            if let url = URL(string: "https://farm\(imgList[i].farm).staticflickr.com/\(imgList[i].server)/\(imgList[i].id)_\(imgList[i].secret)_m.jpg") {
-            }
         }
     }
     
