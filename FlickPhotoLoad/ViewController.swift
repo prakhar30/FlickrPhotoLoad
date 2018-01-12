@@ -120,11 +120,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func getdata(){
+        IJProgressView.shared.showProgressView(view)
         let url = URL(string: flickrURL)
         if let usableUrl = url {
             let request = URLRequest(url: usableUrl)
             let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
                 DispatchQueue.main.async {
+                    IJProgressView.shared.hideProgressView()
                     guard let data = data, error == nil else {              // check for fundamental networking error
                         self.alertBox(msg: "Network Error.")
                         return

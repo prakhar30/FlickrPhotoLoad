@@ -14,6 +14,7 @@
 		95292E0E20065326006FD63A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95292E0D20065326006FD63A /* Assets.xcassets */; };
 		95292E1120065326006FD63A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95292E0F20065326006FD63A /* LaunchScreen.storyboard */; };
 		95292E1E20067755006FD63A /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95292E1D20067755006FD63A /* TableViewCell.swift */; };
+		9566B6622008551C00E968D5 /* IJProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9566B6612008551C00E968D5 /* IJProgressView.swift */; };
 		95741503200746ED00AF50AC /* ImageList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95741502200746ED00AF50AC /* ImageList.swift */; };
 		95F072AF200799E3003F466D /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95F072AE200799E3003F466D /* SDWebImage.framework */; };
 /* End PBXBuildFile section */
@@ -28,6 +29,7 @@
 		95292E1020065326006FD63A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		95292E1220065326006FD63A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		95292E1D20067755006FD63A /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		9566B6612008551C00E968D5 /* IJProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IJProgressView.swift; sourceTree = "<group>"; };
 		95741502200746ED00AF50AC /* ImageList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageList.swift; sourceTree = "<group>"; };
 		95F072AE200799E3003F466D /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = Carthage/Build/iOS/SDWebImage.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -105,6 +107,7 @@
 				95292E0D20065326006FD63A /* Assets.xcassets */,
 				95292E0A20065326006FD63A /* FlickPhotoLoad.xcdatamodeld */,
 				95741502200746ED00AF50AC /* ImageList.swift */,
+				9566B6612008551C00E968D5 /* IJProgressView.swift */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -215,6 +218,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9566B6622008551C00E968D5 /* IJProgressView.swift in Sources */,
 				95292E0C20065326006FD63A /* FlickPhotoLoad.xcdatamodeld in Sources */,
 				95292E1E20067755006FD63A /* TableViewCell.swift in Sources */,
 				95292E0620065326006FD63A /* ViewController.swift in Sources */,
