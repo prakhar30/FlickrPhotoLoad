@@ -4,7 +4,7 @@ Flickr Photo Load is a simple iOS application created to fetch a few public phot
 
 ### Tech
 
-The game makes use of the following ideas, implemented in Swift 3, and xCode 8.2 - 
+The app makes use of the following ideas, implemented in Swift 3, and xCode 8.2 - 
 * [URLSession] - To call RESTful API to fetch data from Flickr
 * [UITableView] - This table is used to show the user their score card along with their choices against the correct answers.
 
